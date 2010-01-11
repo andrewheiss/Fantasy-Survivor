@@ -1,0 +1,12 @@
+<%= error_messages_for 'contestant' %>
+
+<h2>Add a new contestant</h2>
+<% form_for @contestant do |f| %>
+<p>
+	Name:<br />
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= submit_tag %>
+</p>
+<% end -%>

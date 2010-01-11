@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Jim Halpert
+  playing: true
+  votes_count: 1
+  day_off: nil
+
+two:
+  name: Dwight Schrute
+  playing: false
+  votes_count: 0
+  day_off: 2010-01-11 12:42:13
