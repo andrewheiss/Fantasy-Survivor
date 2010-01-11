@@ -1,0 +1,9 @@
+<h2><%= link_to "Shows", shows_path %></h2>
+<h3><%= @show.name %></h3>
+<p><%= @show.contestants.size %> contestants</p>
+<p><%= link_to "Add new contestant", new_show_contestant_path(@show.id) %></p>
+<ul>
+<% @show.contestants.each do |c| %>
+	<li><%= link_to c.name, show_contestant_path(@show,c) %></li>
+<% end %>
+</ul>

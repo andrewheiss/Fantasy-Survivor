@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div id="content">
-			<h1>Fantasy Survivor</h1>
+			<h1><%= link_to "Fantasy Survivor", root_path %></h1>
 			<% unless flash[:notice].blank? %>
 				<div id="notification"><%= flash[:notice] %></div>
 			<% end %>

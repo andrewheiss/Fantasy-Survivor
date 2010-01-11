@@ -9,13 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100111104213) do
+ActiveRecord::Schema.define(:version => 20100111122250) do
 
   create_table "contestants", :force => true do |t|
     t.string   "name"
     t.boolean  "playing",     :default => true
     t.integer  "votes_count"
     t.datetime "day_off"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "show_id"
+  end
+
+  create_table "shows", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

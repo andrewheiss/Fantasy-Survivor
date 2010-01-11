@@ -1,1 +1,7 @@
-<h2>Random contestant of the day is <%= @contestant.name %></h2>
+<h2>Contestants for <%= @show.name %></h2>
+
+<ul>
+<% for c in @contestants %>
+	<li><%= link_to c.name, show_contestant_path(@show, c) %></li>
+<% end %>
+</ul>

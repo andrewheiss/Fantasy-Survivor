@@ -1,0 +1,10 @@
+<% form_for([@show, @contestant]) do |f| %>
+<%= f.error_messages %>
+<p>
+	Name:<br />
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= submit_tag %>
+</p>
+<% end %>
