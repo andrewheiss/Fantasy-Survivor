@@ -1,0 +1,2 @@
+<h2><%= @episode.name %></h2>
+<p>An episode of <%= link_to @episode.show.name, show_path(@show) %>, which aired/will air at <%= @episode.date.strftime("%l:%M %p on %A, %B %e, %Y") %></p>

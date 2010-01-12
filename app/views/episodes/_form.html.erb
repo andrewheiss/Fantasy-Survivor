@@ -1,0 +1,14 @@
+<% form_for([@show, @episode]) do |f| %>
+<%= f.error_messages %>
+<p>
+	Name:<br />
+	<%= f.text_field :name %>
+</p>
+<p>
+	Date:<br />
+	<%= f.datetime_select :date  %>
+</p>
+<p>
+	<%= submit_tag %>
+</p>
+<% end %>

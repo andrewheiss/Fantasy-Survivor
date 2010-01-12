@@ -1,5 +1,5 @@
 class ContestantsController < ApplicationController
-  before_filter :find_show
+  before_filter :find_show_nested
   before_filter :find_contestant, :only => [:show, :edit, :update, :destroy]
   
   def index
@@ -38,15 +38,6 @@ class ContestantsController < ApplicationController
   def destroy
     @contestant.destroy
     redirect_to show_path(@show)
-  end
-  
-private
-  def find_show
-    @show = Show.find(params[:show_id])
-  end
-  
-  def find_contestant
-    @contestant = @show.contestants.find(params[:id])
   end
 
 end

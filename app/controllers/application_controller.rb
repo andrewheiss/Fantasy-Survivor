@@ -7,4 +7,23 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+protected
+
+  def find_show
+    @show = Show.find(params[:id])
+  end
+
+  def find_show_nested
+    @show = Show.find(params[:show_id])
+  end
+
+  def find_contestant
+    @contestant = @show.contestants.find(params[:id])
+  end
+  
+  def find_episode
+    @episode = @show.episodes.find(params[:id])
+  end
+  
 end

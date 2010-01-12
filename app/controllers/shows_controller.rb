@@ -38,10 +38,5 @@ class ShowsController < ApplicationController
     @show.destroy
     redirect_to root_path(@show)
   end
-  
-private
-  def find_show
-    @show = Show.find(params[:id])
-  end
 
 end

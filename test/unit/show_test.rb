@@ -22,4 +22,12 @@ class ShowTest < ActiveSupport::TestCase
     s.destroy
     assert ! Contestant.exists?(c.id)   # ... now you don't!
   end
+  
+  test "should delete episodes after deleting the show" do
+    s = Show.create(:name => 'Delete me')
+    e = Episode.create(:name => 'Week 1', :date=> '2010-01-12 14:19:02', :show_id => s.id)
+    assert Episode.exists?(e.id)     # Now you see it...
+    s.destroy
+    assert ! Episode.exists?(e.id)   # ... now you don't!
+  end
 end

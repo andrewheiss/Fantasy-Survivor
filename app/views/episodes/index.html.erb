@@ -1,0 +1,7 @@
+<h2>Episodes for <%= @show.name %></h2>
+
+<ul>
+<% for e in @episodes %>
+	<li><%= link_to e.name, show_episode_path(@show, e) %></li>
+<% end %>
+</ul>
