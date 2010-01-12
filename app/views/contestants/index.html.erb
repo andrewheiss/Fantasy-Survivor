@@ -1,7 +1,7 @@
-<h2>Contestants for <%= @show.name %></h2>
+<h2>All contestants</h2>
 
 <ul>
 <% for c in @contestants %>
-	<li><%= link_to c.name, show_contestant_path(@show, c) %></li>
+	<li><%= link_to c.name, contestant_path(c) %></li>
 <% end %>
 </ul>

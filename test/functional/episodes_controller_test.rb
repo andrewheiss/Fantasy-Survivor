@@ -36,4 +36,12 @@ class EpisodesControllerTest < ActionController::TestCase
     }, :show_id => shows(:one)
     assert assigns(:episode).errors.on(:date)
   end
+  
+  test "should redirect after deleting" do
+    show = episodes(:one).show.id
+    assert_difference('Episode.count', -1) do
+       delete :destroy, :id => episodes(:one).id
+    end
+    assert_redirected_to show_path(show)
+  end
 end

@@ -1,9 +1,9 @@
 class ContestantsController < ApplicationController
-  before_filter :find_show_nested
+  before_filter :find_show_nested, :only => [:create, :new]
   before_filter :find_contestant, :only => [:show, :edit, :update, :destroy]
   
   def index
-    @contestants = @show.contestants
+    @contestants = Contestant.find(:all, :order => 'name ASC')
   end
   
   def show
@@ -29,15 +29,16 @@ class ContestantsController < ApplicationController
   def update
     if @contestant.update_attributes(params[:contestant])
       flash[:notice] = 'Contestant updated'
-      redirect_to show_contestant_path(@show, @contestant)
+      redirect_to contestant_path(@contestant)
     else
       render :action => 'edit'
     end
   end
   
   def destroy
+    show = @contestant.show
     @contestant.destroy
-    redirect_to show_path(@show)
+    redirect_to show_path(show)
   end
 
 end

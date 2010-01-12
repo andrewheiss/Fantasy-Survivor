@@ -1,9 +1,9 @@
 class EpisodesController < ApplicationController
-  before_filter :find_show_nested
+  before_filter :find_show_nested, :only => [:create, :new]
   before_filter :find_episode, :only => [:show, :edit, :update, :destroy]
   
   def index
-    @episodes = @show.episodes
+    @episodes = Episode.find(:all, :order => 'name ASC')
   end
   
   def show
@@ -29,15 +29,16 @@ class EpisodesController < ApplicationController
   def update
     if @episode.update_attributes(params[:episode])
       flash[:notice] = 'Episode updated'
-      redirect_to show_episode_path(@show, @episode)
+      redirect_to episode_path(@episode)
     else
       render :action => 'edit'
     end
   end
 
   def destroy
+    show = @episode.show
     @episode.destroy
-    redirect_to show_path(@show)
+    redirect_to show_path(show)
   end
 
 end

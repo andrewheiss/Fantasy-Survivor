@@ -1,9 +1,17 @@
 <h2><%= link_to "Shows", shows_path %></h2>
 <h3><%= @show.name %></h3>
-<p><%= @show.contestants.size %> contestants</p>
-<p><%= link_to "Add new contestant", new_show_contestant_path(@show.id) %></p>
+<p><%= "#{ pluralize(@show.contestants.size, 'contestant') }" %></p>
+<p><%= link_to "Add new contestant", new_show_contestant_path(@show) %></p>
 <ul>
 <% @show.contestants.each do |c| %>
-	<li><%= link_to c.name, show_contestant_path(@show,c) %></li>
+	<li><%= link_to c.name, contestant_path(c) %></li>
+<% end %>
+</ul>
+
+<p><%= "#{ pluralize(@show.episodes.size, 'episode') }" %></p>
+<p><%= link_to "Add new episode", new_show_episode_path(@show) %></p>
+<ul>
+<% @show.episodes.each do |e| %>
+	<li><%= link_to e.name, episode_path(e) %></li>
 <% end %>
 </ul>

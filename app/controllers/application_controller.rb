@@ -13,17 +13,17 @@ protected
   def find_show
     @show = Show.find(params[:id])
   end
-
+  
   def find_show_nested
     @show = Show.find(params[:show_id])
   end
-
+  
   def find_contestant
-    @contestant = @show.contestants.find(params[:id])
+    @contestant = Contestant.find(params[:id])
   end
   
   def find_episode
-    @episode = @show.episodes.find(params[:id])
+    @episode = Episode.find(params[:id])
   end
   
 end
