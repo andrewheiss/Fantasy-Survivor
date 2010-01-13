@@ -38,10 +38,18 @@ class EpisodesControllerTest < ActionController::TestCase
   end
   
   test "should redirect after deleting" do
-    show = episodes(:one).show.id
+    show = episodes(:week_one).show.id
     assert_difference('Episode.count', -1) do
-       delete :destroy, :id => episodes(:one).id
+       delete :destroy, :id => episodes(:week_one).id
     end
     assert_redirected_to show_path(show)
+  end
+  
+  test "should show list of episode's contestants" do
+    get :show, :id => episodes(:week_one)
+    assert_response :success
+    assert_template :show
+    assert_select 'h2#episode_name', episodes(:week_one).name
+    assert_select 'div.vote_form', :count => 2
   end
 end

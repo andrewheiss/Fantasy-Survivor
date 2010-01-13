@@ -1,0 +1,2 @@
+page.replace_html "contestant_#{@contestant.id}_votes", "(#{@contestant.votes.size})"
+page.visual_effect :highlight, "contestant_#{@contestant.id}_form"

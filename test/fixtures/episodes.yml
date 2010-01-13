@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+week_one:
   name: Week 1
   date: 2010-01-12 14:19:02
   show: one
 
-two:
+week_two:
   name: Week 2
   date: 2010-01-12 14:19:02
   show: one

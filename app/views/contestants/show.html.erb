@@ -1,2 +1,7 @@
 <h2 id="contestant_name"><%= @contestant.name %></h2>
 <p>Currently a contestant on <%= link_to @contestant.show.name, show_path(@contestant.show) %></p>
+<h4>
+	<span id="vote_score">
+		Votes: <%= @contestant.votes.size %>
+	</span>
+</h4>

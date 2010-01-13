@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  contestant: jim
+  episode: week_one
+  
+two:
+  contestant: jim
+  episode: week_one

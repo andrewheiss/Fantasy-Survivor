@@ -12,7 +12,7 @@ class ShowTest < ActiveSupport::TestCase
   end
   
   test "should be associated with contestants" do
-    assert_equal [ contestants(:jim), contestants(:dwight) ], shows(:one).contestants
+    assert_equal [ contestants(:dwight), contestants(:jim) ], shows(:one).contestants
   end
   
   test "should delete contestants after deleting the show" do
