@@ -16,6 +16,18 @@ protected
     return unless session[:user_id]
     @current_user = User.find_by_id(session[:user_id])
   end
+  
+  def logged_in?
+    ! @current_user.nil?
+  end
+  
+  helper_method :logged_in?
+  
+  def login_required
+    return true if logged_in?
+    session[:return_to] = request.request_uri
+    redirect_to login_path and return false
+  end
 
   def find_show
     @show = Show.find(params[:id])

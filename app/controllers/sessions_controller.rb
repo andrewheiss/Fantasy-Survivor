@@ -7,13 +7,19 @@ class SessionsController < ApplicationController
     
     if @current_user
       session[:user_id] = @current_user.id
-      redirect_to shows_path
+      if session[:return_to]
+        redirect_to session[:return_to]
+        session[:return_to] = nil
+      else
+        redirect_to shows_path
+      end
     else
       render :action => 'new'
     end
   end
 
   def destroy
+    # TODO: Redirect if not logged in, maybe redirect after logging out?
     session[:user_id] = @current_user = nil
   end
 
