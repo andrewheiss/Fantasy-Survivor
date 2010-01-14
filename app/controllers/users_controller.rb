@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       @session = @user.sessions.create
       session[:id] = @session.id
-      flash[:notice] = "Welcome #{@user.name}, you are now registered"
+      flash[:notice] = "Welcome #{@user.login}, you are now registered"
       redirect_to(root_url)
     else
       render(:action => 'new')

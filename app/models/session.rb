@@ -1,18 +1,18 @@
 class Session < ActiveRecord::Base
-  attr_accessor :name, :password, :match
+  attr_accessor :login, :password, :match
  
   belongs_to :user
  
   before_validation :authenticate_user
  
-  validates_presence_of :match, :message => 'for your name and password could not be found', :unless => :session_has_been_associated?
+  validates_presence_of :match, :message => 'for your login and password could not be found', :unless => :session_has_been_associated?
  
   before_save :associate_session_to_user
  
   private
  
   def authenticate_user
-    self.match = User.find_by_name_and_password(self.name, self.password) unless session_has_been_associated?
+    self.match = User.find_by_login_and_password(self.login, self.password) unless session_has_been_associated?
   end
  
   def associate_session_to_user

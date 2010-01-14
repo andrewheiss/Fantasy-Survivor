@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100114180804) do
+ActiveRecord::Schema.define(:version => 20100114191835) do
 
   create_table "contestants", :force => true do |t|
     t.string   "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20100114180804) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "login"
     t.string   "salt"
     t.string   "encrypted_password"
     t.datetime "created_at"
