@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
  
   def destroy
     Session.destroy(@application_session)
-    session[:id] = @user = nil
+    session[:id] = @current_user = nil
     flash[:notice] = "You are now logged out"
     redirect_to(root_url)
   end

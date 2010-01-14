@@ -27,11 +27,11 @@ class PeopleController < ApplicationController
   end
  
   def edit
-    @person = Person.find(@user)
+    @person = Person.find(@current_user)
   end
  
   def update
-    @person = Person.find(@user)
+    @person = Person.find(@current_user)
     if @person.update_attributes(params[:person])
       flash[:notice] = "Your account has been updated"
       redirect_to(root_url)
@@ -41,8 +41,8 @@ class PeopleController < ApplicationController
   end
  
   def destroy
-    Person.destroy(@user)
-    session[:id] = @user = nil
+    Person.destroy(@current_user)
+    session[:id] = @current_user = nil
     flash[:notice] = "You are now unregistered"
     redirect_to(root_url)
   end

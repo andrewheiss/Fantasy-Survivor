@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   def ensure_login
-    unless @user
+    unless @current_user
       flash[:notice] = "Please login to continue"
       redirect_to(new_session_path)
     end
   end
  
   def ensure_logout
-    if @user
+    if @current_user
       flash[:notice] = "You must logout before you can login or register"
       redirect_to(root_url)
     end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if session[:id]
       if @application_session = Session.find_by_id(session[:id])
         @application_session.update_attributes(:ip_address => request.remote_addr, :path => request.path_info)
-        @user = @application_session.person
+        @current_user = @application_session.person
       else
         session[:id] = nil
         redirect_to(root_url)
