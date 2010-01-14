@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-  def ensure_login
+  def require_login
     unless @current_user
       flash[:notice] = "Please login to continue"
       redirect_to(new_session_path)
     end
   end
  
-  def ensure_logout
+  def require_logout
     if @current_user
       flash[:notice] = "You must logout before you can login or register"
       redirect_to(root_url)

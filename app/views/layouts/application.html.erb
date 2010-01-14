@@ -12,7 +12,7 @@
 			<div id="login_logout">
 				<% if @current_user %>
 				Logged in as: 
-				<%= @current_user.name %>
+				<%= @current_user.name %> (<%= @current_user.id %>)
 				<em><%= link_to "(Logout)", @application_session, :method => :delete %></em>
 				<% else %>
 				<em>Not logged in.</em>

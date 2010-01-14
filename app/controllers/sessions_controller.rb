@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :ensure_login, :only => :destroy
-  before_filter :ensure_logout, :only => [:new, :create]
+  before_filter :require_login, :only => :destroy
+  before_filter :require_logout, :only => [:new, :create]
  
   def index
     redirect_to(new_session_path)
