@@ -1,7 +1,8 @@
 class VotesController < ApplicationController
+  before_filter :login_required
   def create
     @vote = Vote.create(
-      :user_id => @current_user, 
+      :user_id => session[:user_id], 
       :contestant_id => params[:contestant_id], 
       :episode_id=> params[:episode_id])
     @contestant = Contestant.find(params[:contestant_id])

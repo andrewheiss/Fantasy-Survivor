@@ -3,7 +3,9 @@
 one:
   contestant: jim
   episode: week_one
+  user: sally
   
 two:
   contestant: jim
-  episode: week_one
+  episode: week_two
+  user: sally

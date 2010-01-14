@@ -2,14 +2,14 @@ require 'test_helper'
 
 class ContestantsControllerTest < ActionController::TestCase
   test "should show index" do
-    get :index, :show_id => shows(:one)
+    get_with_user :index, :show_id => shows(:one)
     assert_response :success
     assert_template :index
     assert_not_nil assigns(:contestants)
   end
   
   test "should show new form" do
-    get :new, :show_id => shows(:one)
+    get_with_user :new, :show_id => shows(:one)
     assert_response :success
     assert_template :new
     assert_not_nil assigns(:contestant)
@@ -17,7 +17,7 @@ class ContestantsControllerTest < ActionController::TestCase
   end
   
   test "should show edit form" do
-    get :edit, :id => contestants(:jim)
+    get_with_user :edit, :id => contestants(:jim)
     assert_response :success
     assert_template :edit
     assert_not_nil assigns(:contestant)
@@ -25,14 +25,14 @@ class ContestantsControllerTest < ActionController::TestCase
   end
   
   test "should show indivdual contestant page" do
-    get :show, :id => contestants(:jim)
+    get_with_user :show, :id => contestants(:jim)
     assert_response :success
     assert_template :show
     assert_select 'h2#contestant_name', contestants(:jim).name
   end
   
   test "should add contestant" do
-    post :create, :contestant => { 
+    post_with_user :create, :contestant => { 
       :name => 'Test contestant' 
       }, :show_id => shows(:one)
     assert ! assigns(:contestant).new_record?
@@ -41,7 +41,7 @@ class ContestantsControllerTest < ActionController::TestCase
   end
   
   test "should reject missing contestant attribute" do
-    post :create, :contestant => {
+    post_with_user :create, :contestant => {
       :name => nil
     }, :show_id => shows(:one)
     assert assigns(:contestant).errors.on(:name)
@@ -50,8 +50,14 @@ class ContestantsControllerTest < ActionController::TestCase
   test "should redirect after deleting" do
     show = contestants(:jim).show.id
     assert_difference('Contestant.count', -1) do
-       delete :destroy, :id => contestants(:jim).id
+       delete_with_user :destroy, :id => contestants(:jim).id
     end
     assert_redirected_to show_path(show)
+  end
+  
+  test "should redirect if not logged in" do
+    get :new
+    assert_response :redirect
+    assert_redirected_to login_path
   end
 end

@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       end
     else
       render :action => 'new'
+      # TODO: Show error messages for login
     end
   end
 

@@ -1,4 +1,5 @@
 class EpisodesController < ApplicationController
+  before_filter :login_required
   before_filter :find_show_nested, :only => [:create, :new]
   before_filter :find_episode, :only => [:show, :edit, :update, :destroy]
   

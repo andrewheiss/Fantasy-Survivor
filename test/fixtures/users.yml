@@ -1,15 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  login: MyString
-  password: MyString
-  name: MyString
-  email: MyString
-  salt: MyString
+sally:
+  login: sally
+  password: secret
+  name: Sally Smith
+  email: sally@example.com
 
-two:
-  login: MyString
-  password: MyString
-  name: MyString
-  email: MyString
-  salt: MyString
+john:
+  login: john
+  password: secret1
+  name: John Smith
+  email: john@example.com

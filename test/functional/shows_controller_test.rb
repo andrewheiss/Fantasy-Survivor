@@ -2,26 +2,26 @@ require 'test_helper'
 
 class ShowsControllerTest < ActionController::TestCase
   test "should show index" do
-    get :index
+    get_with_user :index
     assert_response :success
     assert_template :index
     assert_not_nil assigns(:shows)
   end
   
   test "should show new" do
-    get :new
+    get_with_user :new
     assert_response :success
     assert_template :new
     assert_not_nil assigns(:show)
   end
   
   test "should show new form" do
-    get :new
+    get_with_user :new
     assert_select 'form p', :count => 2
   end
   
   test "should add show" do
-    post :create, :show => {
+    post_with_user :create, :show => {
       :name => 'Test show'
     }
     assert ! assigns(:show).new_record?
@@ -30,9 +30,16 @@ class ShowsControllerTest < ActionController::TestCase
   end
   
   test "should reject missing show attribute" do
-    post :create, :show => {
+    post_with_user :create, :show => {
       :name => nil
     }
     assert assigns(:show).errors.on(:name)
   end
+  
+  test "should redirect if not logged in" do
+    get :new
+    assert_response :redirect
+    assert_redirected_to login_path
+  end
+  
 end
