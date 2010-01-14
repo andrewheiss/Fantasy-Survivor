@@ -48,7 +48,7 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   # map.resource :session
-  map.resources :people
+  map.resources :users
   map.resources :sessions
   map.login 'login', :controller => 'sessions', :action => 'create'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'

@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if session[:id]
       if @application_session = Session.find_by_id(session[:id])
         @application_session.update_attributes(:ip_address => request.remote_addr, :path => request.path_info)
-        @current_user = @application_session.person
+        @current_user = @application_session.user
       else
         session[:id] = nil
         redirect_to(root_url)

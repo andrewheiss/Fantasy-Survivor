@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     @session = Session.new(params[:session])
     if @session.save
       session[:id] = @session.id
-      flash[:notice] = "Hello #{@session.person.name}, you are now logged in"
+      flash[:notice] = "Hello #{@session.user.name}, you are now logged in"
       redirect_to(root_url)
     else
       render(:action => 'new')
