@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   before_filter :require_logout, :only => [:new, :create]
  
   def index
-    redirect_to(new_session_path)
+    redirect_to(login_path)
   end
  
   def new
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     @session = Session.new(params[:session])
     if @session.save
       session[:id] = @session.id
-      flash[:notice] = "Hello #{@session.user.login}, you are now logged in"
+      flash[:notice] = "Hello #{@session.user.name}, you are now logged in"
       redirect_to(root_url)
     else
       render(:action => 'new')

@@ -12,11 +12,11 @@
 			<div id="login_logout">
 				<% if @current_user %>
 				Logged in as: 
-				<%= @current_user.login %> (<%= @current_user.id %>)
+				<%= @current_user.login %>
 				<em><%= link_to "(Logout)", @application_session, :method => :delete %></em>
 				<% else %>
 				<em>Not logged in.</em>
-				<%= link_to 'Login', new_session_path %>
+				<%= link_to 'Login', login_path %>
 				<% end %>
 			</div>
 			<h1><%= link_to "Fantasy Survivor", root_path %></h1>
@@ -24,11 +24,6 @@
 				<div id="notification"><%= flash[:notice] %></div>
 			<% end %>
 			<%= yield %>
-			<% if @current_user %>
-			    <%= "User: #{@current_user.login}" %><br />
-			    <%= "IP Address: #{@application_session.ip_address}" %><br />
-			    <%= "Path: #{@application_session.path}" %>
-			  <% end %>
 		</div>
 	</body>
 </html>

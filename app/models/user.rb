@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
  
   has_many :sessions, :dependent => :destroy
   has_many :votes
- 
+  
+  validates_presence_of :name, :login, :email
+  
   validates_uniqueness_of :login, :message => "is already in use by another user"
- 
+  
   validates_format_of :login, :with => /^([a-z0-9_]{2,16})$/i,
                       :message => "must be 4 to 16 letters, numbers or underscores and have no spaces"
    
@@ -18,7 +20,10 @@ class User < ActiveRecord::Base
                       :unless => :password_is_not_being_updated?
  
   validates_confirmation_of :password
- 
+  
+  validates_uniqueness_of :email, :message => "is already in use"
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "is invalid"
+   
   before_save :scrub_login
   after_save :flush_passwords
  

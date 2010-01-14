@@ -1,14 +1,20 @@
 <% form_for @user do |f| %>
- 
-  <label for="user_login">Username:</label><br />
-  <%= f.text_field :login %><br />
- 
-  <label for="user_password">Password:</label><br />
-  <%= f.password_field :password %><br />
- 
-  <label for="user_password_confirmation">Password Confirmation:</label><br />
-  <%= f.password_field :password_confirmation %><br />
- 
-  <%= submit_tag "Submit" %>
- 
+	
+	<label for="user_name">Full name:</label><br />
+	<%= f.text_field :name %><br />
+	
+	<label for="user_email">E-mail address:</label><br />
+	<%= f.text_field :email %><br />
+	
+	<label for="user_login">Username:</label><br />
+	<%= f.text_field :login %><br />
+
+	<label for="user_password">Password:</label><br />
+	<%= f.password_field :password %><br />
+
+	<label for="user_password_confirmation">Password Confirmation:</label><br />
+	<%= f.password_field :password_confirmation %><br />
+
+	<%= submit_tag "Submit" %>
+
 <% end %>
