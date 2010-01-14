@@ -3,30 +3,40 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  
+  before_filter :maintain_session_and_user
+  
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-  before_filter :fetch_logged_in_user
-  
-protected
-
-  def fetch_logged_in_user
-    return unless session[:user_id]
-    @current_user = User.find_by_id(session[:user_id])
+  def ensure_login
+    unless @user
+      flash[:notice] = "Please login to continue"
+      redirect_to(new_session_path)
+    end
   end
-  
-  def logged_in?
-    ! @current_user.nil?
+ 
+  def ensure_logout
+    if @user
+      flash[:notice] = "You must logout before you can login or register"
+      redirect_to(root_url)
+    end
   end
-  
-  helper_method :logged_in?
-  
-  def login_required
-    return true if logged_in?
-    session[:return_to] = request.request_uri
-    redirect_to login_path and return false
+ 
+  private
+ 
+  def maintain_session_and_user
+    if session[:id]
+      if @application_session = Session.find_by_id(session[:id])
+        @application_session.update_attributes(:ip_address => request.remote_addr, :path => request.path_info)
+        @user = @application_session.person
+      else
+        session[:id] = nil
+        redirect_to(root_url)
+      end
+    end
   end
 
   def find_show

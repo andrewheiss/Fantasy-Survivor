@@ -47,7 +47,9 @@ ActionController::Routing::Routes.draw do |map|
       contestant.resources :votes
     end
   end
-  map.resource :session
+  # map.resource :session
+  map.resources :people
+  map.resources :sessions
   map.login 'login', :controller => 'sessions', :action => 'create'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
   map.connect ':controller/:action/:id'

@@ -1,27 +1,30 @@
 class SessionsController < ApplicationController
-  def new
+  before_filter :ensure_login, :only => :destroy
+  before_filter :ensure_logout, :only => [:new, :create]
+ 
+  def index
+    redirect_to(new_session_path)
   end
-
+ 
+  def new
+    @session = Session.new
+  end
+ 
   def create
-    @current_user = User.find_by_login_and_password(params[:login], params[:password])
-    
-    if @current_user
-      session[:user_id] = @current_user.id
-      if session[:return_to]
-        redirect_to session[:return_to]
-        session[:return_to] = nil
-      else
-        redirect_to shows_path
-      end
+    @session = Session.new(params[:session])
+    if @session.save
+      session[:id] = @session.id
+      flash[:notice] = "Hello #{@session.person.name}, you are now logged in"
+      redirect_to(root_url)
     else
-      render :action => 'new'
-      # TODO: Show error messages for login
+      render(:action => 'new')
     end
   end
-
+ 
   def destroy
-    # TODO: Redirect if not logged in, maybe redirect after logging out?
-    session[:user_id] = @current_user = nil
+    Session.destroy(@application_session)
+    session[:id] = @user = nil
+    flash[:notice] = "You are now logged out"
+    redirect_to(root_url)
   end
-
 end

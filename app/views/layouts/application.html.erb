@@ -10,13 +10,13 @@
 	<body>
 		<div id="content">
 			<div id="login_logout">
-				<% if @current_user %>
+				<% if @user %>
 				Logged in as: 
-				<%= @current_user.login %>
-				<em><%= link_to "(Logout)", logout_path, :method => :delete %></em>
+				<%= @user.name %>
+				<em><%= link_to "(Logout)", @application_session, :method => :delete %></em>
 				<% else %>
 				<em>Not logged in.</em>
-				<%= link_to 'Login', login_path %>
+				<%= link_to 'Login', new_session_path %>
 				<% end %>
 			</div>
 			<h1><%= link_to "Fantasy Survivor", root_path %></h1>
