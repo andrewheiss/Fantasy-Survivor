@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
  
   def create
-    @user = User.new(params[:person])
+    @user = User.new(params[:user])
     if @user.save
       @session = @user.sessions.create
       session[:id] = @session.id
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
  
   def update
     @user = User.find(@current_user)
-    if @user.update_attributes(params[:person])
+    if @user.update_attributes(params[:user])
       flash[:notice] = "Your account has been updated"
       redirect_to(root_url)
     else

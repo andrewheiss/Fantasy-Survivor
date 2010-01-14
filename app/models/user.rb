@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   has_many :sessions, :dependent => :destroy
   has_many :votes
  
-  validates_uniqueness_of :name, :message => "is already in use by another person"
+  validates_uniqueness_of :name, :message => "is already in use by another user"
  
   validates_format_of :name, :with => /^([a-z0-9_]{2,16})$/i,
                       :message => "must be 4 to 16 letters, numbers or underscores and have no spaces"
- 
+   
   validates_format_of :password, :with => /^([\x20-\x7E]){4,16}$/,
                       :message => "must be 4 to 16 characters",
                       :unless => :password_is_not_being_updated?
@@ -23,9 +23,9 @@ class User < ActiveRecord::Base
   after_save :flush_passwords
  
   def self.find_by_name_and_password(name, password)
-    person = self.find_by_name(name)
-    if person and person.encrypted_password == ENCRYPT.hexdigest(password + person.salt)
-      return person
+    user = self.find_by_name(name)
+    if user and user.encrypted_password == ENCRYPT.hexdigest(password + user.salt)
+      return user
     end
   end
  
