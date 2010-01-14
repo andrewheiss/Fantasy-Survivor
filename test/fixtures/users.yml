@@ -2,12 +2,14 @@
 
 sally:
   login: sally
-  password: secret
+  encrypted_password: 6477bf28f26e087ef6cdbb4740dc653e7210244933ad8239ec48f7b6195910f9 #test
+  salt: Me9iYDuP1NEs
   name: Sally Smith
   email: sally@example.com
 
 john:
   login: john
-  password: secret1
+  encrypted_password: f7e393fa16f60591f9e5539f94dda628bea8fa0150d2b7fbe2e84b007c3a0aea #test1
+  salt: z2HeBqw10URN
   name: John Smith
   email: john@example.com
