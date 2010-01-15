@@ -37,14 +37,23 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   
   def get_with_user(action, parameters = nil, session = nil, flash = nil)
-    get action, parameters, :user_id => users(:sally).id
+    get action, parameters, :id => sessions(:session_one).id
   end
   
   def post_with_user(action, parameters = nil, session = nil, flash = nil)
-    post action, parameters, :user_id => users(:sally).id
+    post action, parameters, :id => sessions(:session_one).id
+  end
+  
+  def put_with_user(action, parameters = nil, session = nil, flash = nil)
+    put action, parameters, :id => sessions(:session_one).id
   end
   
   def delete_with_user(action, parameters = nil, session = nil, flash = nil)
-    delete action, parameters, :user_id => users(:sally).id
+    delete action, parameters, :id => sessions(:session_one).id
   end
+  
+  def head_with_user(action, parameters = nil, session = nil, flash = nil)
+    head action, parameters, :id => sessions(:session_one).id
+  end
+  
 end
