@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class SessionTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should authenticate user" do
+    s = Session.create(:login => users(:sally).login, :password => 'test')
+    assert s.valid?
+  end
+  
+  test "should not authenticate unregistered user" do
+    s = Session.create(:login => 'bogus', :password => 'blah')
+    assert ! s.valid?
   end
 end
