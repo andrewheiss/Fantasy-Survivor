@@ -24,8 +24,23 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url)
     end
   end
- 
+  
+  def require_admin
+    unless @current_user.level == 'admin'
+      flash[:notice] = "You must be an administrator to do that."
+      redirect_to(root_url)
+    end
+  end
+  
   private
+  
+  def admin?
+    if @current_user && @current_user.level == 'admin'
+      return true
+    end
+  end
+  
+  helper_method :admin?
  
   def maintain_session_and_user
     if session[:id]

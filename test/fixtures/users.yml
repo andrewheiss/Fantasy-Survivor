@@ -6,6 +6,7 @@ sally:
   salt: Me9iYDuP1NEs
   name: Sally Smith
   email: sally@example.com
+  level: admin
 
 john:
   login: john
@@ -13,3 +14,4 @@ john:
   salt: z2HeBqw10URN
   name: John Smith
   email: john@example.com
+  level: user

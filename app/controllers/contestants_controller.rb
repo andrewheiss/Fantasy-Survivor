@@ -1,5 +1,6 @@
 class ContestantsController < ApplicationController
   before_filter :require_login
+  before_filter :require_admin, :except => [:index, :show]
   before_filter :find_show_nested, :only => [:create, :new]
   before_filter :find_contestant, :only => [:show, :edit, :update, :destroy]
   

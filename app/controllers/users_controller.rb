@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_login, :only => [:edit, :update, :destroy]
   before_filter :require_logout, :only => [:new, :create]
+  before_filter :require_admin, :only => [:index]
  
   def index
     @users = User.find(:all)

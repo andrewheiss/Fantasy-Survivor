@@ -14,6 +14,9 @@
 				Logged in as: 
 				<%= @current_user.login %>
 				<em><%= link_to "(Logout)", @application_session, :method => :delete %></em>
+				<% if @current_user.level == 'admin' %>
+				<h4>You're an administrator!</h4>
+				<% end %>
 				<% else %>
 				<em>Not logged in.</em>
 				<%= link_to 'Login', login_path %>
