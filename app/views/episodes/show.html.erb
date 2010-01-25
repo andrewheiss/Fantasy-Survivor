@@ -1,16 +1,8 @@
+<div id="vote_status"><%= render :partial => 'status' %></div>
+
 <h2 id="episode_name"><%= @episode.name %></h2>
 <p>An episode of <%= link_to @episode.show.name, show_path(@episode.show) %>, which aired/will air at <%= @episode.date.strftime("%l:%M %p on %A, %B %e, %Y") %></p>
 
-<ul>
-<% for c in @episode.show.contestants %>
-	<li id="contestant_<%= c.id %>_form">
-		<p><%= link_to c.name, contestant_path(c) %> <span id="contestant_<%= c.id %>_votes">(<%= c.votes.size %>)</span></p> 
-		<div class="vote_form">
-			<% form_remote_tag :url => contestant_votes_path(c) do %>
-				<%= hidden_field_tag 'episode_id', params[:id] %>
-				<%= submit_tag 'Vote', :confirm => "Do you really want to vote for #{c.name}?" %>
-			<% end %>
-		</div>
-	</li>
-<% end %>
+<ul id="current_contestants_list">
+<%= render :partial => 'current_contestants', :locals => {:contestants => @episode.show.contestants } %>
 </ul>

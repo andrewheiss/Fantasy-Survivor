@@ -1,0 +1,4 @@
+<% form_remote_tag :url => contestant_votes_path(contestant) do %>
+	<%= hidden_field_tag 'episode_id', params[:id] %>
+	<%= submit_tag 'Vote', :confirm => "Do you really want to vote for #{contestant.name}?" %>
+<% end %>

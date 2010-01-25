@@ -41,6 +41,13 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :admin?
+  
+  def already_voted?
+    vote = Vote.all(:conditions => {:user_id => @current_user.id, :episode_id => @episode.id})
+    return true unless vote.size == 0
+  end
+  
+  helper_method :already_voted?
  
   def maintain_session_and_user
     if session[:id]

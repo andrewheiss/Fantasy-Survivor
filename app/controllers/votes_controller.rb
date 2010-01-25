@@ -6,6 +6,7 @@ class VotesController < ApplicationController
       :contestant_id => params[:contestant_id], 
       :episode_id=> params[:episode_id])
     @contestant = Contestant.find(params[:contestant_id])
+    @episode = Episode.find(params[:episode_id])
     
     respond_to do |format|
       format.html {redirect_to @vote.episode}

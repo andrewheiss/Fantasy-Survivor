@@ -9,6 +9,7 @@ class EpisodesController < ApplicationController
   end
   
   def show
+    @contestant_voted_for = Vote.find(:first, :conditions => {:user_id => @current_user.id, :episode_id => @episode.id})
   end
 
   def new

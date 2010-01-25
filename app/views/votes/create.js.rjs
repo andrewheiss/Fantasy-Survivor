@@ -1,2 +1,5 @@
 page.replace_html "contestant_#{@contestant.id}_votes", "(#{@contestant.votes.size})"
-page.visual_effect :highlight, "contestant_#{@contestant.id}_form"
+page[:vote_status].replace_html :partial => 'episodes/status', :locals => { :just_voted => true }
+page[:current_contestants_list].replace_html :partial => 'episodes/current_contestants', :locals => {:contestants => @episode.show.contestants }
+page.visual_effect :highlight, 'vote_status'
+# page.visual_effect :highlight, "contestant_#{@contestant.id}_form"

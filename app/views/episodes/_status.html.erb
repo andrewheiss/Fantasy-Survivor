@@ -1,0 +1,9 @@
+<% just_voted = nil if local_assigns[:just_voted].nil? %>
+
+<% if just_voted %>
+	Woot! Thanks for voting!
+<% elsif already_voted? && !just_voted %>
+	You already voted for <%= @contestant_voted_for.contestant.name %> this week.
+<% else %>
+	You haven't voted yet. Go ahead and do it.
+<% end %>
