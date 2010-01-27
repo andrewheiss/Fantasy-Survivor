@@ -9,3 +9,8 @@ week_two:
   name: Week 2
   date: 2010-01-12 14:19:02
   show: one
+  
+week_three:
+  name: Week 3
+  date: 2010-01-12 14:19:02
+  show: one

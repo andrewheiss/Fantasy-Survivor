@@ -45,11 +45,11 @@ class EpisodesControllerTest < ActionController::TestCase
     assert_redirected_to show_path(show)
   end
   
-  test "should show list of episode's contestants" do
-    get_with_user :show, :id => episodes(:week_one)
+  test "should show list of episode's contestants and allow for voting" do
+    get_with_user :show, :id => episodes(:week_three)
     assert_response :success
     assert_template :show
-    assert_select 'h2#episode_name', episodes(:week_one).name
+    assert_select 'h2#episode_name', episodes(:week_three).name
     assert_select 'div.vote_form', :count => 2
   end
   
@@ -57,5 +57,10 @@ class EpisodesControllerTest < ActionController::TestCase
     get :new
     assert_response :redirect
     assert_redirected_to login_path
+  end
+  
+  test "should not be able to vote if already voted" do
+    get_with_user :show, :id => episodes(:week_one)
+    assert_select 'div.vote_form', :count => 0
   end
 end

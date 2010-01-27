@@ -1,10 +1,10 @@
 <% for c in contestants %>
 	<li id="contestant_<%= c.id %>_form">
 		<p><%= link_to c.name, contestant_path(c) %> <span id="contestant_<%= c.id %>_votes">(<%= c.votes.size %>)</span></p> 
-		<div class="vote_form">
-			<% if ! already_voted? %>
-			<%= render :partial => 'vote_form', :locals => {:contestant => c} %>
-			<% end %>
+		<% if ! already_voted? %>
+		<div class="vote_form">			
+		<%= render :partial => 'vote_form', :locals => {:contestant => c} %>	
 		</div>
+		<% end %>
 	</li>
 <% end %>
