@@ -1,18 +1,17 @@
-<%= error_messages_for :session %>
- 
+<%= error_messages_for :session, :header_message => 'There was a problem logging in', :message => "Please fix the following errors before continuing." %>
 <fieldset>
   <legend>Login</legend>
- 
   <% form_for @session do |f| %>
- 
-    <label for="session_login">Username</label><br />
-    <%= f.text_field :login %><br />
- 
-    <label for="session_password">Password</label><br />
-    <%= f.password_field :password %><br />
- 
-    <%= submit_tag "login" %>
- 
+	<p>
+		<%= f.label :login, "Login" %><br />
+	    <%= f.text_field :login %>
+	</p>
+    <p>
+		<%= f.label :password, "Password" %><br />
+	    <%= f.password_field :password %>
+	</p>
+    <p>
+		<%= submit_tag "login" %>
+	</p>
   <% end %>
- 
 </fieldset>

@@ -1,12 +1,3 @@
-<%= error_messages_for :user %>
- 
-<fieldset>
-  <legend>Edit Account</legend>
- 
-  <%= render :partial => 'form' %>
- 
-</fieldset>
- 
+<%= render :partial => 'form' %> 
 <br />
- 
 <%= button_to "Unregister", @user, :method => :delete, :confirm => "Are you sure?" %>

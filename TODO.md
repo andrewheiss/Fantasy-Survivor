@@ -2,7 +2,6 @@
 
 * Reports and stats
 * Improve user page, show most recent votes, stats
-* Standardize forms (especially login, registration ones. Nothing is wrapped in <p>s)
 * Privatize (or partially privatize them, just editing functionality) user pages
 
 # Done #
@@ -16,4 +15,5 @@
 # Archived/Ignored #
 
 * Figure out why there the script hangs on the voting page…
+* Standardize forms (especially login, registration ones. Nothing is wrapped in <p>s)
 

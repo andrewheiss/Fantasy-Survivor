@@ -1,20 +1,23 @@
+<%= error_messages_for :user %>
+<fieldset>
+	<legend>User information</legend>
 <% form_for @user do |f| %>
 	
-	<label for="user_name">Full name:</label><br />
-	<%= f.text_field :name %><br />
+	<p><%= f.label :name, "Full name" %><br />
+	<%= f.text_field :name %></p>
 	
-	<label for="user_email">E-mail address:</label><br />
-	<%= f.text_field :email %><br />
+	<p><%= f.label :email, "E-mail address" %><br />
+	<%= f.text_field :email %></p>
 	
-	<label for="user_login">Username:</label><br />
-	<%= f.text_field :login %><br />
+	<p><%= f.label :login, "Username" %><br />
+	<%= f.text_field :login %></p>
 
-	<label for="user_password">Password:</label><br />
-	<%= f.password_field :password %><br />
+	<p><%= f.label :password, "Password" %><br />
+	<%= f.password_field :password %></p>
 
-	<label for="user_password_confirmation">Password Confirmation:</label><br />
-	<%= f.password_field :password_confirmation %><br />
+	<p><%= f.label :password_confirmation, "Password Confirmation" %><br />
+	<%= f.password_field :password_confirmation %></p>
 
-	<%= submit_tag "Submit" %>
-
+	<p><%= submit_tag "Submit" %></p>
 <% end %>
+</fieldset>

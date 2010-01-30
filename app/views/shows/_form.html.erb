@@ -1,10 +1,13 @@
+<fieldset>
+	<legend>Show information</legend>
 <% form_for([@show]) do |f| %>
 <%= f.error_messages %>
 <p>
-	Name:<br />
+	<%= f.label :name, "Name" %><br />
 	<%= f.text_field :name %>
 </p>
 <p>
 	<%= submit_tag %>
 </p>
 <% end %>
+</fieldset>
