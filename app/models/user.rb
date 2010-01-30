@@ -1,6 +1,8 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+  # Adapted from http://www.robertsosinski.com/2008/02/23/simple-and-restful-authentication-for-ruby-on-rails/
+  # FUTURE: Add account recovery - http://www.robertsosinski.com/2008/03/24/simple-and-restful-account-recovery-for-ruby-on-rails/
   attr_reader :password
  
   ENCRYPT = Digest::SHA256

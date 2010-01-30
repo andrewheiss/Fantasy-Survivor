@@ -48,8 +48,8 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   # map.resource :session
-  map.resources :users
-  map.resources :sessions
+  map.resources :users, :collection => {:help => :get, :recover => :post}
+  map.resources :sessions, :member => {:recovery => :get}
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
   map.connect ':controller/:action/:id'

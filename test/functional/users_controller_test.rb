@@ -50,4 +50,26 @@ class UsersControllerTest < ActionController::TestCase
     }
     assert assigns(:user).errors.on(:name)
   end
+  
+  test "shouldn't e-mail lost password link--user doesn't exist" do
+    ActionMailer::Base.deliveries.clear
+    post :recover, :login => 'bogus'
+    assert ActionMailer::Base.deliveries.empty?
+    assert_equal 'Your account could not be found', flash[:notice]
+    assert_redirected_to help_users_path
+  end
+  
+  test "should e-mail lost password link" do
+    ActionMailer::Base.deliveries.clear
+    user = users(:sally)
+    post :recover, :login => user.login
+    assert !ActionMailer::Base.deliveries.empty?
+    email = ActionMailer::Base.deliveries.first
+    key = Crypto.encrypt("#{user.id}:#{user.salt}")
+    
+    assert_equal [user.email], email.to
+    assert_match(/#{key}/, email.body)
+    assert_equal 'Please check your e-mail', flash[:notice]
+    assert_redirected_to root_url
+  end
 end
