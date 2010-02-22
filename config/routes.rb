@@ -52,6 +52,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sessions, :member => {:recovery => :get}
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
+  map.with_options :controller => 'static' do |static|
+    static.rules 'rules', :action => 'rules'
+    static.how_to_play 'how-to-play', :action => 'how_to_play'
+  end
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
