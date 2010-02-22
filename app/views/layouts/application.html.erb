@@ -8,8 +8,8 @@
 		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
-		<div id="content">
-			<div id="login_logout">
+		<div class="row">
+			<div id="login_logout" class="column grid_10">
 				<% if @current_user %>
 				Logged in as: 
 				<%= @current_user.login %>
@@ -19,16 +19,41 @@
 				<% end %>
 				<% else %>
 				<em>Not logged in.</em>
-				<%= link_to 'Login', login_path %> - 
-				<%= link_to 'Register', new_user_path %> - 
+				<%= link_to 'Login', login_path %> | 
+				<%= link_to 'Register', new_user_path %> | 
 				<%= link_to 'Help', help_users_path %>
 				<% end %>
 			</div>
-			<h1><%= link_to "Fantasy Survivor", root_path %></h1>
-			<% unless flash[:notice].blank? %>
-				<div id="notification"><%= flash[:notice] %></div>
+		</div>
+		<div class="row">
+			<% 10.times do |i| %>
+			<div class="column grid_1 grey"></div>
 			<% end %>
-			<%= yield %>
+		</div>
+		<div class="row">
+			<div class="column grid_10">
+				<h1><%= link_to(image_tag("/images/270x50.png", :alt => "Fantasy Survivor"), root_path) %></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column grid_3">
+				<ul id="nav">
+					<li><%= link_to "How to play", how_to_play_path %></li>
+					<li><%= link_to "Rules", rules_path %></li>
+					<li><%= link_to "Register", new_user_path %></li>
+				</ul>
+			</div>
+			<div class="column grid_5 bordered">
+				<div class="content">
+					<% unless flash[:notice].blank? %>
+						<div id="notification"><%= flash[:notice] %></div>
+					<% end %>
+					<%= yield %>
+				</div>
+			</div>
+			<div class="column grid_2">
+				
+			</div>
 		</div>
 	</body>
 </html>

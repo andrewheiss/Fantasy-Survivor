@@ -1,12 +1,123 @@
-body { 
-	background-color: #666; 
-	margin: 15px 25px; 
-	font-family: Helvetica Neue, Arial, sans-serif;
+/* @override http://localhost:3000/stylesheets/style.css */
+
+
+
+/* @group Resets */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}caption,th {text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+
+/* @end */
+
+/* @group 1kb grid */
+
+/*
+600px grid system ~ Core CSS.
+10 Columns ~ Margin left: 5px ~ Margin right: 5px
+
+Based on the 1kb grid system - http://www.1kbgrid.com/
+by Tyler Tate
+
+Created by the Grid System Generator - v1.01
+Learn more ~ http://www.gridsystemgenerator.com/
+*/
+
+.grid_1 {width: 50px;}
+.grid_2 {width: 110px;}
+.grid_3 {width: 170px;}
+.grid_4 {width: 230px;}
+.grid_5 {width: 290px;}
+.grid_6 {width: 350px;}
+.grid_7 {width: 410px;}
+.grid_8 {width: 470px;}
+.grid_9 {width: 530px;}
+.grid_10 {width: 590px;}
+.column {margin: 0 5px 0 5px;
+         overflow: hidden;
+         float: left;
+         display: inline;}
+.row {width: 600px;
+         margin: 10px auto;
+         overflow: hidden;}
+.row .row {margin: 0 -5px 0 -5px;
+         width: auto;
+         display: inline-block;}
+
+/* @end */
+
+/* @group @font-face setup */
+
+/*
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * @vendor:     Paratype
+ * @vendorurl:  http://fonts.ru
+ * @licenseurl: http://www.fontsquirrel.com/license/PT-Sans
+ *
+ *
+ */
+
+@font-face {
+	font-family: 'PTSansNarrowRegular';
+	src: url('fonts/PT_Sans_Narrow.eot');
+	src: local('PT Sans Narrow Regular'), local('PTSans-Narrow'), url('fonts/PT_Sans_Narrow.ttf') format('truetype');
 }
 
-#content {
-	background-color: #fff;
-	padding: 10px 10px 20px 10px;
+@font-face {
+	font-family: 'PTSansCaptionBold';
+	src: url('fonts/PT_Sans_Caption_Bold.eot');
+	src: local('PT Sans Caption Bold'), local('PTSans-CaptionBold'), url('fonts/PT_Sans_Caption_Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansCaptionRegular';
+	src: url('fonts/PT_Sans_Caption.eot');
+	src: local('PT Sans Caption Regular'), local('PTSans-Caption'), url('fonts/PT_Sans_Caption.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansBoldItalic';
+	src: url('fonts/PT_Sans_Bold_Italic.eot');
+	src: local('PT Sans Bold Italic'), local('PTSans-BoldItalic'), url('fonts/PT_Sans_Bold_Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansBold';
+	src: url('fonts/PT_Sans_Bold.eot');
+	src: local('PT Sans Bold'), local('PTSans-Bold'), url('fonts/PT_Sans_Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansItalic';
+	src: url('fonts/PT_Sans_Italic.eot');
+	src: local('PT Sans Italic'), local('PTSans-Italic'), url('fonts/PT_Sans_Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansRegular';
+	src: url('fonts/PT_Sans.eot');
+	src: local('PT Sans Regular'), local('PTSans-Regular'), url('fonts/PT_Sans.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'PTSansNarrowBold';
+	src: url('fonts/PT_Sans_Narrow_Bold.eot');
+	src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url('fonts/PT_Sans_Narrow_Bold.ttf') format('truetype');
+}
+
+/* @end */
+
+
+body { 
+	background-color: #fff; 
+	margin: 15px 25px; 
+	font-family: PTSansRegular, Helvetica Neue, Arial, sans-serif;
+}
+
+#login_logout {
+	margin-bottom: 25px;
+	text-transform: lowercase;
+	text-align: right;
 }
 
 #notification {
@@ -18,4 +129,23 @@ body {
 
 .fieldWithErrors { 
 	border: 5px solid #f66;
+}
+
+.grey {
+	height: 50px;
+	background-color: #d2d3d5;	
+}
+
+.bordered {
+	border: 2px solid #c0cedb;
+}
+
+.content {
+	padding: 5px;
+}
+
+ul#nav {
+	text-transform: uppercase;
+	text-align: right;
+	list-style: none;
 }
